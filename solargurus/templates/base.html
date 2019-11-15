@@ -1,0 +1,116 @@
+{% load i18n %}
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="solar, alternative energy, panels">
+  <meta name="description" content="">
+  <meta name="author" content="SolarGurus">
+  <title>SolarGurus - Click. Compare. Connect.</title>
+  <link rel="shortcut icon" href="/static/img/favicon.ico" type="image/x-icon">
+    <!-- Favicons-->
+    <!-- <link rel="shortcut icon" href="/static/img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="img/apple-touch-icon-144x144-precomposed.png">
+     -->
+    <!-- GOOGLE WEB FONT -->
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,900,400italic,700italic,300,300italic' rel='stylesheet' type='text/css'>
+
+    <!-- BASE CSS -->
+    <link href="/static/css/base.css" rel="stylesheet">
+
+    <!-- Radio and check inputs -->
+    <link href="/static/css/skins/square/grey.css" rel="stylesheet">
+    <link href="/static/css/ion.rangeSlider.css" rel="stylesheet">
+    <link href="/static/css/ion.rangeSlider.skinFlat.css" rel="stylesheet" >
+
+
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+    <header>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col--md-4 col-sm-4 col-xs-4">
+                <a href="/solargurus/" id="logo">
+                <img src="/static/img/guru.png" height="50" alt="" data-retina="true" class="hidden-xs">
+                <img src="/static/img/logo_mobile.png" width="59" height="23" alt="" data-retina="true" class="hidden-lg hidden-md hidden-sm">
+                <!-- <h7 class="hidden-xs">We prepare. You compare!</h7> -->
+
+                </a>
+            </div>
+            <nav class="col--md-8 col-sm-8 col-xs-8">
+            <a class="cmn-toggle-switch cmn-toggle-switch__htx open_close" href="javascript:void(0);"><span>Menu mobile</span></a>
+            <div class="main-menu">
+                <div id="header_menu">
+                    <img src="/static/img/guru.png" height="50" alt="" data-retina="true">
+                    <!-- <h8>We prepare. You compare!</h8> -->
+                </div>
+                <a href="#" class="open_close" id="close_in"><i class="icon_close"></i></a>
+                 <ul>
+
+
+                     <li><a href="#">About Us</a></li>
+                     <li><a href="#">Installers</a></li>
+                     <li><a href="#">FAQ's</a></li>
+                     <li style="display: flex; justify-content: flex-start; align-items: baseline;"><a href="/solargurus/login" data-toggle="modal" >Login</a>/<a href="/solargurus/sign_up" data-toggle="modal" >Register</a></li>
+
+                </ul>
+            </div><!-- End main-menu -->
+            </nav>
+        </div><!-- End row -->
+    </div><!-- End container -->
+    </header>
+    <section class="parallax-window" id="short" data-parallax="scroll" data-image-src="/static/img/sub_header_short.jpg" data-natural-width="1400" data-natural-height="350">
+        <div id="subheader">
+        	<div id="sub_content">
+        	 <h1>Account</h1>
+
+            </div><!-- End sub_content -->
+    	</div><!-- End subheader -->
+    </section><!-- End section -->
+    <!-- End SubHeader ============================================ -->
+
+        <div id="position">
+            <div class="container">
+                <div class="col-md-3">
+                </div>
+                <div class="col-md-6">
+                    <div class="box_style_2" id="order_process">
+
+    {% block content %}{% endblock %}
+</div>
+</div>
+    </div>
+    </div>
+    <script src="/static/js/jquery-1.11.2.min.js"></script>
+    <script src="/static/js/common_scripts_min.js"></script>
+    <script src="/static/js/functions.js"></script>
+    <script src="/static/assets/validate.js"></script>
+
+    <!-- SPECIFIC SCRIPTS -->
+    <script  src="/static/js/cat_nav_mobile.js"></script>
+    <script>$('#cat_nav').mobileMenu();</script>
+    <script src="http://maps.googleapis.com/maps/api/js"></script>
+    <script src="/static/js/map.js"></script>
+    <script src="/static/js/infobox.js"></script>
+    <script src="/static/js/ion.rangeSlider.js"></script>
+    <script>
+    $('input').each(function() {
+    $(this).addClass('form-control')
+})
+</script>
+
+</body>
+
+</html>

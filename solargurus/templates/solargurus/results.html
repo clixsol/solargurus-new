@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<!--[if IE 9]><html class="ie ie9"> <![endif]-->
+{% load static %}
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="solar, alternative energy, panels">
+  <meta name="description" content="">
+  <meta name="author" content="SolarGurus">
+  <title>SolarGurus - Click. Compare. Connect.</title>
+  <link rel="shortcut icon" href="/static/img/favicon.ico" type="image/x-icon">
+
+    <!-- Favicons-->
+    <!-- <link rel="shortcut icon" href="../../static/img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/x-icon" href="../../static/img/apple-touch-icon-57x57-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="../../static/img/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="../../static/img/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="../../static/img/apple-touch-icon-144x144-precomposed.png"> -->
+
+    <!-- GOOGLE WEB FONT -->
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,900,400italic,700italic,300,300italic' rel='stylesheet' type='text/css'>
+
+    <!-- BASE CSS -->
+    <link href="../../static/css/base.css" rel="stylesheet">
+
+    <!-- Radio and check inputs -->
+    <link href="../../static/css/skins/square/grey.css" rel="stylesheet">
+    <link href="../../static/css/ion.rangeSlider.css" rel="stylesheet">
+    <link href="../../static/css/ion.rangeSlider.skinFlat.css" rel="stylesheet" >
+
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <style>
+
+    .popup-overlay{
+  /*Hides pop-up when there is no "active" class*/
+  visibility:hidden;
+  /* position:absolute; */
+  background:#ffffff;
+  border:1px solid #666666;
+  position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 50%;
+z-index:200;
+border-radius: 15px;
+}
+.popup-overlay.active{
+  /*displays pop-up when "active" class is present*/
+  visibility:visible;
+  text-align:center;
+}
+
+.popup-content {
+  /*Hides pop-up content when there is no "active" class */
+ visibility:hidden;
+}
+
+.popup-content.active {
+  /*Shows pop-up content when "active" class is present */
+  visibility:visible;
+}
+    </style>
+
+</head>
+
+<body>
+
+<!--[if lte IE 8]>
+    <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a>.</p>
+<![endif]-->
+
+	<div id="preloader">
+        <div class="sk-spinner sk-spinner-wave" id="status">
+            <div class="sk-rect1"></div>
+            <div class="sk-rect2"></div>
+            <div class="sk-rect3"></div>
+            <div class="sk-rect4"></div>
+            <div class="sk-rect5"></div>
+        </div>
+    </div><!-- End Preload -->
+
+    <!-- Header ================================================== -->
+    <header>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col--md-4 col-sm-4 col-xs-4">
+                <a href="/solargurus/" id="logo">
+                <img src="../../static/img/guru.png" height="50" alt="" data-retina="true" class="hidden-xs">
+                <img src="../../static/img/logo_mobile.png" width="59" height="23" alt="" data-retina="true" class="hidden-lg hidden-md hidden-sm">
+                <!-- <h7 class="hidden-xs">We prepare. You compare!</h7> -->
+                <!--  -->
+                </a>
+            </div>
+            <nav class="col--md-8 col-sm-8 col-xs-8">
+            <a class="cmn-toggle-switch cmn-toggle-switch__htx open_close" href="javascript:void(0);"><span>Menu mobile</span></a>
+            <div class="main-menu">
+                <div id="header_menu">
+                    <img src="/static/img/biglogo.jpg" style="width:100%;" alt="" data-retina="true">
+                    <!-- <img src="../../static/img/guru.png" height="50" alt="" data-retina="true"> -->
+                    <!-- <h8>We prepare. You compare!</h8> -->
+                </div>
+                <a href="#" class="open_close" id="close_in"><i class="icon_close"></i></a>
+                 <ul>
+                    <li>
+                    <a href="javascript:void(0);" class="show-submenu">Home<i class="icon-down-open-mini"></i></a>
+
+                    </li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Installers</a></li>
+                    <li><a href="#">FAQ's</a></li>
+                    <li style="display: flex; justify-content: flex-start; align-items: baseline;"><a href="/solargurus/login" data-toggle="modal" >Login</a>/<a href="/solargurus/sign_up" data-toggle="modal" >Register</a></li>
+                    <!-- <li><a href="/solargurus/login" data-toggle="modal" >Login</a></li>
+                    <li><a href="/solargurus/sign_up" data-toggle="modal" >Register</a></li> -->
+                </ul>
+            </div><!-- End main-menu -->
+            </nav>
+        </div><!-- End row -->
+    </div><!-- End container -->
+    </header>
+    <!-- End Header =============================================== -->
+
+<!-- SubHeader =============================================== -->
+<section class="parallax-window" id="short" data-parallax="scroll" data-image-src="{{background_img}}" data-natural-width="1400" data-natural-height="350">
+    <div id="subheader">
+	<div id="sub_content">
+    	<h1>{{ num_results }} results in your area</h1>
+        <div><i class="icon_pin"></i>{{ zipcode }}</div>
+    </div><!-- End sub_content -->
+</div><!-- End subheader -->
+</section><!-- End section -->
+<!-- End SubHeader ============================================ -->
+
+    <div id="position">
+        <div class="container">
+            <!--Creates the popup body-->
+            <div class="popup-overlay">
+              <!--Creates the popup content-->
+               <div class="popup-content">
+                  <h2 id="pheader">Pop-Up</h2>
+                  <p id="pcontent"> This is an example pop-up that you can make using jQuery.</p>
+                 <!--popup's close button-->
+                  <button class="close">Close</button>    </div>
+            </div>
+            <!-- <ul>
+                <li><a href="#0">Home</a></li>
+                <li><a href="#0">Category</a></li>
+                <li>Page active</li>
+            </ul> -->
+        </div>
+    </div><!-- Position -->
+
+    <div class="collapse" id="collapseMap">
+		<div id="map" class="map"></div>
+	</div><!-- End Map -->
+
+<!-- Content ================================================== -->
+<div class="container margin_60_35">
+	<div class="row">
+
+		<div class="col-md-3">
+
+			</div><!--End filters col-->
+		</div><!--End col-md -->
+
+		<div class="col-md-9">
+
+        <!-- <div id="tools">
+				<div class="row">
+					<div class="col-md-3 col-sm-3 col-xs-6">
+						<div class="styled-select">
+							<select name="sort_rating" id="sort_rating">
+								<option value="" selected>Sort by ranking</option>
+								<option value="lower">Lowest ranking</option>
+								<option value="higher">Highest ranking</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-9 col-sm-6 hidden-xs">
+						<a href="#" class="bt_filters"><i class="icon-th"></i></a>
+					</div>
+				</div>
+			</div> -->
+      <!--End tools -->
+      {% for package in packages %}
+      {% if package.vendor.certified %}
+      			<div class="strip_list wow fadeIn" data-wow-delay="0.1s">
+      				<!-- <div class="ribbon_1">
+      					Popular
+      				</div> -->
+      				<div class="row">
+                        <img style="width:30px;position:absolute; top:10px; right:10px;" src="/static/img/certified.png" alt="">
+      					<div class="col-md-9 col-sm-9">
+      						<div class="desc">
+      							<div class="thumb_strip">
+      								<a href="#"><img style="width:100%; height:100%;" src="{{ package.vendor.logo }}" alt=""></a>
+
+      							</div>
+
+      							<!-- <div class="rating">
+      								<i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i> (<small><a href="#0">98 reviews</a></small>)
+      							</div> -->
+      							<h3>{{ package.vendor.name }}</h3>
+
+      							<div class="type">
+      								{{ package.vendor.slogan|default_if_none:"" }}
+      							</div>
+
+      							<!-- <div class="location">
+      								{{ package.vendor.address }}, {{ package.vendor.city }}, {{ package.vendor.state }} {{package.vendor.zipcode}}
+
+      							</div>
+      							<ul>
+      								<li>{{ package.vendor.phone }}<i class="icon_check_alt2 ok"></i></li>
+
+      							</ul> -->
+
+                                  <div style="display:flex; max-width: 100%;justify-content: space-between;">
+
+                                      <a style="flex-direction: column;display: flex;justify-content: center;align-items: center;" onclick="show('Purchasing Options','{{package.purchasing_options|escapejs}}');">
+                                          <img style="width:70px;height:70px;" src="/static/img/icons2/icon-21.png" />
+                                           <span style="text-align:center;">Purchasing Options</span>
+                                      </a>
+                                      <a style="flex-direction: column;display: flex;justify-content: center;align-items: center;" onclick="show('Warranty/Insurance','{{package.insurance|escapejs}}');">
+                                          <img style="width:70px;height:70px;" src="/static/img/icons2/icon-20.png" />
+                                          <span style="text-align:center;">Warranty / Insurance</span>
+                                      </a>
+                                      <a style="flex-direction: column;display: flex;justify-content: center;align-items: center;" onclick="show('Turn Aroud Time','{{package.turn_around_time|escapejs}}');">
+                                          <img style="width:70px;height:70px;" src="/static/img/icons2/icon-12.png" />
+
+                                          <span style="text-align:center;">Installation Time</span>
+
+                                      </a>
+                                      <a style="flex-direction: column;display: flex;justify-content: center;align-items: center;" onclick="show('Ground Mounts','{{package.ground_mounts|escapejs}}');">
+                                          <img style="width:70px;height:70px;" src="/static/img/icons2/icon-18.png" />
+
+                                          <span style=";text-align:center;">Ground Mounts</span>
+
+                                      </a>
+                                  </div>
+
+
+                                  <!-- <div style="display:flex; max-width: 100%; justify-content: space-between;">
+                                      <span style="width:50px;text-align:center;">Purchasing Options</span>
+                                      <span style="width:50px;text-align:center;">Warranty/Insurance</span>
+                                      {% if package.turn_around_time != None %}
+                                      <span style="width:50px;text-align:center;">{{package.turn_around_time}}</span>
+                                      {% else %}
+                                      <span style="width:50px;text-align:center;">Time Until Installation</span>
+                                      {% endif %}
+                                      {% if package.ground_mounts != None %}
+                                      <span style="width:50px;text-align:center;">{{package.ground_mounts}}</span>
+                                      {% else %}
+                                      <span style="width:50px;text-align:center;">Ground Mounts</span>
+                                      {% endif %}
+                                  </div> -->
+
+      						</div>
+
+      					</div>
+
+      					<div class="col-md-3 col-sm-3">
+
+      						<div class="go_to">
+
+      							<div>
+      								<a href="../view_package/{{ package.id }}" class="btn_1">Get a Free Quote</a>
+      							</div>
+
+      						</div>
+
+      					</div>
+                        <!-- <div style="position:absolute; right:0; bottom: 0;"><img style="width:100px;" src="/static/img/badge.png" alt=""></div> -->
+
+      				</div><!-- End row-->
+      			</div><!-- End strip_list-->
+                {% endif %}
+      {% endfor %}
+{% for package in packages %}
+{% if not package.vendor.certified %}
+<div class="strip_list wow fadeIn" data-wow-delay="0.1s">
+    <!-- <div class="ribbon_1">
+        Popular
+    </div> -->
+    <div class="row">
+        <!-- <img style="width:30px;position:absolute; top:10px; right:10px;" src="/static/img/certified.png" alt=""> -->
+        <div class="col-md-9 col-sm-9">
+            <div class="desc">
+                <div class="thumb_strip">
+                    <a href="#"><img style="width:100%; height:100%;" src="{{ package.vendor.logo }}" alt=""></a>
+
+                </div>
+
+                <!-- <div class="rating">
+                    <i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i> (<small><a href="#0">98 reviews</a></small>)
+                </div> -->
+                <h3>{{ package.vendor.name }}</h3>
+
+                <div class="type">
+                    {{ package.vendor.slogan|default_if_none:"" }}
+                </div>
+
+                <!-- <div class="location">
+                    {{ package.vendor.address }}, {{ package.vendor.city }}, {{ package.vendor.state }} {{package.vendor.zipcode}}
+
+                </div>
+                <ul>
+                    <li>{{ package.vendor.phone }}<i class="icon_check_alt2 ok"></i></li>
+
+                </ul> -->
+
+                  <div style="display:flex; max-width: 100%;justify-content: space-around;">
+
+                      <a style="flex-direction: column;display: flex;justify-content: center;align-items: center;" onclick="track_click('Phone', {{package.id}});show('Phone','{{package.vendor.phone|escapejs}}');">
+                          <img style="margin-top:15px;width:30px;height:30px;" src="/static/img/icons/phone.png" />
+                           <span style="padding-top:15px;margin-right: 20px; margin-left: 20px;max-width: 100px;text-align:center;">Phone</span>
+                      </a>
+                      <a style="flex-direction: column;display: flex;justify-content: center;align-items: center;" onclick=onclick="show('Email','{{package.vendor.email|escapejs}}');">
+                          <img style="margin-top:15px;width:30px;height:30px;" src="/static/img/icons/email.png" />
+                          <span style="padding-top:15px;margin-right: 20px; margin-left: 20px;max-width: 100px;text-align:center;">Email</span>
+                      </a>
+                      <a style="flex-direction: column;display: flex;justify-content: center;align-items: center;" onclick="show('Address','{{package.vendor.address|escapejs}}, {{package.vendor.city|escapejs}}, {{package.vendor.state|escapejs}} {{package.vendor.zipcode|escapejs}}');">
+                          <img style="margin-top:15px;width:30px;height:30px;" src="/static/img/icons/location.png" />
+
+                          <span style="padding-top:15px;margin-right: 20px; margin-left: 20px;max-width: 100px;text-align:center;">Address</span>
+
+                      </a>
+                      <a style="flex-direction: column;display: flex;justify-content: center;align-items: center;" onclick="track_click('Website', {{package.id}});show('Website','{{package.vendor.website|escapejs}}');">
+                          <img style="margin-top:15px;width:30px;height:30px;" src="/static/img/icons/website.png" />
+
+                          <span style="padding-top:15px;margin-right: 20px; margin-left: 20px;max-width: 100px;text-align:center;">Website</span>
+
+                      </a>
+                  </div>
+
+
+                  <!-- <div style="display:flex; max-width: 100%; justify-content: space-between;">
+                      <span style="width:50px;text-align:center;">Purchasing Options</span>
+                      <span style="width:50px;text-align:center;">Warranty/Insurance</span>
+                      {% if package.turn_around_time != None %}
+                      <span style="width:50px;text-align:center;">{{package.turn_around_time}}</span>
+                      {% else %}
+                      <span style="width:50px;text-align:center;">Time Until Installation</span>
+                      {% endif %}
+                      {% if package.ground_mounts != None %}
+                      <span style="width:50px;text-align:center;">{{package.ground_mounts}}</span>
+                      {% else %}
+                      <span style="width:50px;text-align:center;">Ground Mounts</span>
+                      {% endif %}
+                  </div> -->
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3 col-sm-3">
+
+            <div class="go_to" style="display: none;">
+
+                <div>
+                    <a href="../view_package/{{ package.id }}" class="btn_1">Get a Free Quote</a>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- <div style="position:absolute; right:0; bottom: 0;"><img style="width:100px;" src="/static/img/badge.png" alt=""></div> -->
+
+    </div><!-- End row-->
+</div><!-- End strip_list-->
+
+            {% endif %}
+{% endfor %}
+            <!-- <a href="#0" class="load_more_bt wow fadeIn" data-wow-delay="0.2s">Load more...</a> -->
+		</div><!-- End col-md-9-->
+
+	</div><!-- End row -->
+</div><!-- End container -->
+<!-- End Content =============================================== -->
+<footer>
+      <div class="container">
+
+          <!-- End row -->
+          <div class="row">
+              <div class="col-md-12">
+                  <div id="social_footer">
+                      <ul>
+                          <!-- facebook twitter instagram linkedin -->
+                          <li><a href="#0"><i class="icon-facebook"></i></a></li>
+                          <li><a href="#0"><i class="icon-twitter"></i></a></li>
+                          <!-- <li><a href="#0"><i class="icon-google"></i></a></li> -->
+                          <li><a href="#0"><i class="icon-instagram"></i></a></li>
+                          <!-- <li><a href="#0"><i class="icon-pinterest"></i></a></li> -->
+                          <!-- <li><a href="#0"><i class="icon-vimeo"></i></a></li> -->
+                          <li><a href="#0"><i class="icon-linkedin"></i></a></li>
+                      </ul>
+                      <p>
+                          © SolarGurus 2017
+                      </p>
+                  </div>
+              </div>
+          </div><!-- End row -->
+      </div><!-- End container -->
+  </footer>
+
+<div class="layer"></div><!-- Mobile menu overlay mask -->
+
+<!-- Login modal -->
+<div class="modal fade" id="login_2" tabindex="-1" role="dialog" aria-labelledby="myLogin" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content modal-popup">
+				<a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
+				<form action="#" class="popup-form" id="myLogin">
+                	<div class="login_icon"><i class="icon_lock_alt"></i></div>
+					<input type="text" class="form-control form-white" placeholder="Username">
+					<input type="text" class="form-control form-white" placeholder="Password">
+					<div class="text-left">
+						<a href="#">Forgot Password?</a>
+					</div>
+					<button type="submit" class="btn btn-submit">Submit</button>
+				</form>
+			</div>
+		</div>
+	</div><!-- End modal -->
+
+<!-- Register modal -->
+<div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="myRegister" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content modal-popup">
+				<a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
+				<form action="#" class="popup-form" id="myRegister">
+                	<div class="login_icon"><i class="icon_lock_alt"></i></div>
+					<input type="text" class="form-control form-white" placeholder="Name">
+					<input type="text" class="form-control form-white" placeholder="Last Name">
+                    <input type="email" class="form-control form-white" placeholder="Email">
+                    <input type="text" class="form-control form-white" placeholder="Password"  id="password1">
+                    <input type="text" class="form-control form-white" placeholder="Confirm password"  id="password2">
+                    <div id="pass-info" class="clearfix"></div>
+					<div class="checkbox-holder text-left">
+						<div class="checkbox">
+							<input type="checkbox" value="accept_2" id="check_2" name="check_2" />
+							<label for="check_2"><span>I Agree to the <strong>Terms &amp; Conditions</strong></span></label>
+						</div>
+					</div>
+					<button type="submit" class="btn btn-submit">Register</button>
+				</form>
+			</div>
+		</div>
+	</div><!-- End Register modal -->
+
+<!-- COMMON SCRIPTS -->
+<script src="../../static/js/jquery-1.11.2.min.js"></script>
+<script src="../../static/js/common_scripts_min.js"></script>
+<script src="../../static/js/functions.js"></script>
+<script src="../../static/assets/validate.js"></script>
+
+<!-- SPECIFIC SCRIPTS -->
+<script  src="../../static/js/cat_nav_mobile.js"></script>
+<script>$('#cat_nav').mobileMenu();</script>
+<script src="http://maps.googleapis.com/maps/api/js"></script>
+<script src="../../static/js/map.js"></script>
+<script src="../../static/js/infobox.js"></script>
+<script src="../../static/js/ion.rangeSlider.js"></script>
+<script>
+function track_click(type, id) {
+    if (type == 'Phone') {
+        $.post('/solargurus/phoneclick/', { package_id: id })
+    }
+    if (type == 'Website') {
+        $.post('/solargurus/websiteclick/', { package_id: id })
+    }
+}
+function show(header, content) {
+    alert(header + ': ' + content)
+}
+function show2(header, content) {
+    $('#pheader').html(header)
+    $('#pcontent').html(content)
+    $('.popup-overlay, .popup-content').addClass('active')
+}
+$('.close, .popup-overlay').on('click', function() {
+    $('.popup-overlay, .popup-content').removeClass('active')
+})
+$(function() {
+    'use strict'
+    $('#range').ionRangeSlider({
+        hide_min_max: true,
+        keyboard: true,
+        min: 0,
+        max: 15,
+        from: 0,
+        to: 5,
+        type: 'double',
+        step: 1,
+        prefix: 'Km ',
+        grid: true
+    })
+})
+</script>
+</body>
+</html>
